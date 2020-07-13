@@ -10,13 +10,18 @@ import UIKit
 
 import CoreData
 
+// MARK: RecentViewController: UITabBarController
 
 class RecentViewController: UIViewController {
     
+    // MARK: proporties
+
     var dataController:DataController!
+    var quotes : [History] = []
+
+    // MARK: outlet
     @IBOutlet weak var tableView: UITableView!
     
-    var quotes : [History] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

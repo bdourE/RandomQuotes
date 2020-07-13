@@ -9,20 +9,22 @@
 import UIKit
 import CoreData
 
+// MARK: FavoritesViewController: UIViewController
 
 class FavoritesViewController: UIViewController {
     
-    var dataController:DataController!
-    
-    
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: Outlets
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: Outlets
+    
+    var dataController:DataController!
     var quotes : [Favorite] = []
     
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,9 +33,9 @@ class FavoritesViewController: UIViewController {
             quotes = result
         }
         tableView.reloadData()
-
-        
     }
+    
+    
     
 }
 
@@ -52,8 +54,6 @@ extension FavoritesViewController: UITableViewDataSource {
             let Quote = quotes[indexPath.row]
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "FavTableViewCell", for: indexPath) as! FavoriteTableViewCell
-
-            print(Quote.quote)
             cell.QText.text = Quote.quote
             cell.BGview.backgroundColor = .random()
 
@@ -62,21 +62,5 @@ extension FavoritesViewController: UITableViewDataSource {
     }
 }
 
-extension CGFloat {
-    static func random() -> CGFloat {
-        return CGFloat(arc4random()) / CGFloat(UInt32.max)
-    }
-}
-
-extension UIColor {
-    static func random() -> UIColor {
-        return UIColor(
-            red:   .random(),
-            green: .random(),
-            blue:  .random(),
-            alpha: 1.0
-        )
-    }
-}
 
 

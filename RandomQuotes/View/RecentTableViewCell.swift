@@ -8,7 +8,13 @@
 
 import UIKit
 
+// MARK: - RecentTableViewCell: UICollectionViewCell
+
 class RecentTableViewCell : UITableViewCell {
+    
+    // MARK: Outlets
+
+    
     @IBOutlet weak var QText: UITextView!
     
     

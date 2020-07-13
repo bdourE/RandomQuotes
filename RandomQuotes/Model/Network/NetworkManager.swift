@@ -18,8 +18,6 @@ class NetworkManager {
     var dataController:DataController!
     
     
-    //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
     internal typealias RequestCompletion = (Bool, Error? , [String:String]?) -> ()?
     var afManager : SessionManager!
     init(dataC:DataController) {
@@ -38,20 +36,19 @@ class NetworkManager {
             switch (response.result) {
                 
             case.success(let value) :
+                
+                print("downloding JSON successd")
+                
                 let json = JSON(value)
-//                var data: [String: String] = [:]
-//                data["qute"] = json["en"].string
-//                data["author"] = json["author"].string
-//                data["id"] = json["id"].string
                 let Qoute = History(context: self.dataController.viewContext)
                 Qoute.author = json["author"].string
                 //print(Qoute.author)
                 Qoute.quote = json["en"].string
                 Qoute.id = json["id"].string
                 try? self.dataController.viewContext.save()
+                print("the data saved to history list")
                 
-                
-                var success = true
+                let success = true
            
                 completionBlock(success, nil , ["author":Qoute.author!  , "text":Qoute.quote! , "id" : Qoute.id!] )
                 break

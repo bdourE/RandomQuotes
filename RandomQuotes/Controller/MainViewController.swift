@@ -10,8 +10,11 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+// MARK: MainViewController: UIViewController
 
 class MainViewController: UIViewController {
+
+    // MARK: ouetlet
 
     @IBOutlet weak var QuoteTextView: UITextView!
     @IBOutlet weak var AuthorTextView: UITextView!
@@ -20,28 +23,29 @@ class MainViewController: UIViewController {
     @IBOutlet weak var NextButton: UIButton!
 
 
-    //var Qoute : History?
-    
+    // MARK: proporties
     var newtwork : NetworkManager!
-
    var dataController:DataController!
-
     let path = "https://programming-quotes-api.herokuapp.com/quotes/random"
-
     var QoutesData : [String : String]!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //request for qoute and save in history
         newtwork = NetworkManager(dataC : dataController)
+        //present the latest qoute
         loadQuetes()
  
+  
     }
     
     
     func loadQuetes(){
         
+        print("Loading data")
         newtwork.loadJSONFile(url: path, completionBlock: { (success,error,data) -> Void in
             
             // When download completes,control flow goes here.
@@ -54,12 +58,11 @@ class MainViewController: UIViewController {
                     
                     self.LikeButton.isEnabled = true
                     self.NextButton.isEnabled = true
-
                         }
             
             else {
-                
-                // download fail
+                //error in loading json file
+                self.QuoteTextView.text =  "Check intenet connection"
             }
         })
         
@@ -72,6 +75,7 @@ class MainViewController: UIViewController {
         NextButton.isEnabled = false
         QuoteTextView.text = "loading"
         AuthorTextView.text = "..."
+        print("UI element reset")
     }
     
     @IBAction func addToFavorite(_ sender: Any) {
@@ -81,16 +85,13 @@ class MainViewController: UIViewController {
         Qoute.quote = QoutesData["text"]
         Qoute.id = QoutesData["id"]
         try? self.dataController.viewContext.save()
-        
         LikeButton.setImage(UIImage(named: "fillHeart.png"), for: .normal)
-
-        
-        
-        
+        print("the data save to favorite list")
         
     }
     
     @IBAction func update(_ sender: Any) {
+        
         resetView()
         loadQuetes()
         

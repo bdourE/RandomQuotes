@@ -8,7 +8,13 @@
 
 import UIKit
 
+// MARK: - FavoriteTableViewCell: UICollectionViewCell
+
 class FavoriteTableViewCell : UITableViewCell {
+    
+    // MARK: Outlets
+
+    
     @IBOutlet weak var BGview: UIView!
     @IBOutlet weak var QText: UITextView!
     

@@ -8,18 +8,21 @@
 
 import UIKit
 
+// MARK: TabControlller: UITabBarController
+
+
 class TabControlller : UITabBarController {
     
+    // MARK: proporties
+    
     var dataController:DataController!
-    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
     
     
     override func viewDidLoad() {
         
         dataController = appDelegate.dataController
-        
+    
         
         let views = self.viewControllers!
         
