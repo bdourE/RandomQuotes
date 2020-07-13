@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G13035" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Favorite" representedClassName="Favorite" syncable="YES" codeGenerationType="class">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString="0" syncable="YES"/>
+        <attribute name="quote" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="History" representedClassName="History" syncable="YES" codeGenerationType="class">
+        <attribute name="author" optional="YES" attributeType="String" defaultValueString="none" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" defaultValueString="0" syncable="YES"/>
+        <attribute name="quote" optional="YES" attributeType="String" defaultValueString="none" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Favorite" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="History" positionX="122.91015625" positionY="-8.09375" width="128" height="90"/>
+    </elements>
+</model>
